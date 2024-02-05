@@ -132,7 +132,7 @@ class TestUserDBInstances(unittest.TestCase):
         self.user.save()
 
     def test_user_all(self):
-        """It checks if all() function returns newly created instance"""
+        """It checks if all() function returns newly created instanc"""
         all_objs = storage.all()
         all_user_objs = storage.all('User')
 
