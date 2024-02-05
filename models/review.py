@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Review Class from Models Module
+Review Class from Modeles and Api
 """
 import os
 from models.base_model import BaseModel, Base
@@ -9,7 +9,7 @@ storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class Review(BaseModel, Base):
-    """Review class handles all application reviews"""
+    """Review class handle all applications review"""
     if storage_type == "db":
         __tablename__ = 'reviews'
         text = Column(String(1024), nullable=False)
