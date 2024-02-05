@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling User objects and operations
+A path for handling User objects and operations
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -10,7 +10,7 @@ from models.user import User
 @app_views.route("/users", methods=["GET"], strict_slashes=False)
 def user_get_all():
     """
-    retrieves all User objects
+    It recover all User objects
     :return: json of all users
     """
     user_list = []
@@ -24,7 +24,7 @@ def user_get_all():
 @app_views.route("/users", methods=["POST"], strict_slashes=False)
 def user_create():
     """
-    create user route
+    It creates user path
     :return: newly created user obj
     """
     user_json = request.get_json(silent=True)
@@ -46,7 +46,7 @@ def user_create():
 @app_views.route("/users/<user_id>",  methods=["GET"], strict_slashes=False)
 def user_by_id(user_id):
     """
-    gets a specific User object by ID
+    It gets specific User object by ID
     :param user_id: user object id
     :return: user obj with the specified id or error
     """
@@ -62,7 +62,7 @@ def user_by_id(user_id):
 @app_views.route("/users/<user_id>",  methods=["PUT"], strict_slashes=False)
 def user_put(user_id):
     """
-    updates specific User object by ID
+    It get specific User object by ID
     :param user_id: user object ID
     :return: user object and 200 on success, or 400 or 404 on failure
     """
@@ -88,7 +88,7 @@ def user_put(user_id):
 @app_views.route("/users/<user_id>",  methods=["DELETE"], strict_slashes=False)
 def user_delete_by_id(user_id):
     """
-    deletes User by id
+    It removes User by id
     :param user_id: user object id
     :return: empty dict with 200 or 404 if not found
     """
