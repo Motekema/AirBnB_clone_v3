@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-index
+The index file for all
 """
 
 from flask import jsonify
@@ -12,7 +12,7 @@ from models import storage
 @app_views.route("/status", methods=['GET'], strict_slashes=False)
 def status():
     """
-    status route
+    The status route
     :return: response with json
     """
     data = {
@@ -28,7 +28,7 @@ def status():
 @app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def stats():
     """
-    stats of all objs route
+    A stats of objects route
     :return: json of all objs
     """
     data = {
