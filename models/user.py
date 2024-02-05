@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-User Class from Models Module
+It uses Class from Models Module
 """
 import os
 from models.base_model import BaseModel, Base
@@ -11,7 +11,7 @@ storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class User(BaseModel, Base):
-    """User class handles all application users"""
+    """A user class handles all application users"""
     if storage_type == "db":
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
@@ -36,7 +36,7 @@ class User(BaseModel, Base):
     @property
     def password(self):
         """
-        getter for password
+        A getter for password
         :return: password (hashed)
         """
         return self.__dict__.get("password")
@@ -44,7 +44,7 @@ class User(BaseModel, Base):
     @password.setter
     def password(self, password):
         """
-        Password setter, with md5 hasing
+        A Password setter, with md5 hasing
         :param password: password
         :return: nothing
         """
