@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling Review objects and operations
+A path for handling Review objects and operations
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -11,7 +11,7 @@ from models.review import Review
                  strict_slashes=False)
 def reviews_by_place(place_id):
     """
-    retrieves all Review objects by place
+    It recover * Review objects by place
     :return: json of all reviews
     """
     review_list = []
@@ -30,7 +30,7 @@ def reviews_by_place(place_id):
                  strict_slashes=False)
 def review_create(place_id):
     """
-    create REview route
+    It creates REviews path
     :return: newly created Review obj
     """
     review_json = request.get_json(silent=True)
@@ -59,7 +59,7 @@ def review_create(place_id):
                  strict_slashes=False)
 def review_by_id(review_id):
     """
-    gets a specific Review object by ID
+    It gets specific Review object by ID
     :param review_id: place object id
     :return: review obj with the specified id or error
     """
@@ -76,7 +76,7 @@ def review_by_id(review_id):
                  strict_slashes=False)
 def review_put(review_id):
     """
-    updates specific Review object by ID
+    This updates specific Review object by ID
     :param review_id: Review object ID
     :return: Review object and 200 on success, or 400 or 404 on failure
     """
@@ -104,7 +104,7 @@ def review_put(review_id):
                  strict_slashes=False)
 def review_delete_by_id(review_id):
     """
-    deletes Review by id
+    This removes Review by id
     :param : Review object id
     :return: empty dict with 200 or 404 if not found
     """
