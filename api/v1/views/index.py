@@ -13,7 +13,7 @@ from models import storage
 def status():
     """
     The status route
-    :return: response with json
+    :Display: response with json
     """
     data = {
         "status": "OK"
