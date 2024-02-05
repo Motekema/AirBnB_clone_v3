@@ -10,7 +10,7 @@ from models.user import User
 @app_views.route("/users", methods=["GET"], strict_slashes=False)
 def user_get_all():
     """
-    It recover all User objects
+    It recover all Usr objects
     :return: json of all users
     """
     user_list = []
