@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Database engine """
+""" All data for engine """
 
 import os
 from sqlalchemy import create_engine, MetaData
@@ -9,7 +9,7 @@ from models import base_model, amenity, city, place, review, state, user
 
 
 class DBStorage:
-    """handles long term storage of all class instances"""
+    """This manages long term storage of class instances"""
     CNC = {
         'BaseModel': base_model.BaseModel,
         'Amenity': amenity.Amenity,
@@ -20,12 +20,12 @@ class DBStorage:
         'User': user.User
     }
 
-    """ handles storage for database """
+    """ It manage storage for database """
     __engine = None
     __session = None
 
     def __init__(self):
-        """ creates the engine self.__engine """
+        """ It creates engine self.__engine """
         self.__engine = create_engine(
             'mysql+mysqldb://{}:{}@{}/{}'.format(
                 os.environ.get('HBNB_MYSQL_USER'),
@@ -36,7 +36,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """ returns a dictionary of all objects """
+        """ It returns dictionary of all objects """
         obj_dict = {}
         if cls:
             obj_class = self.__session.query(self.CNC.get(cls)).all()
@@ -55,12 +55,12 @@ class DBStorage:
         return obj_dict
 
     def new(self, obj):
-        """ adds objects to current database session """
+        """ It adds objects to current database session """
         self.__session.add(obj)
 
     def get(self, cls, id):
         """
-        fetches specific object
+        It gets specific object
         :param cls: class of object as string
         :param id: id of object as string
         :return: found object or None
@@ -75,23 +75,23 @@ class DBStorage:
 
     def count(self, cls=None):
         """
-        count of how many instances of a class
+        It count how many instances of a class
         :param cls: class name
         :return: count of instances of a class
         """
         return len(self.all(cls))
 
     def save(self):
-        """ commits all changes of current database session """
+        """ It commits changes of current database session """
         self.__session.commit()
 
     def delete(self, obj=None):
-        """ deletes obj from current database session if not None """
+        """ It removes current database session if not None """
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """ creates all tables in database & session from engine """
+        """ It creates all tables in database & session from engine """
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(
             sessionmaker(
@@ -100,6 +100,6 @@ class DBStorage:
 
     def close(self):
         """
-            calls remove() on private session attribute (self.session)
+            It calls remove() on private session attribute (self.session)
         """
         self.__session.remove()
