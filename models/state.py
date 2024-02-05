@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-State Class from Models Module
+State Class from Models and Api
 """
 import os
 from models.base_model import BaseModel, Base
@@ -11,7 +11,7 @@ storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class State(BaseModel, Base):
-    """State class handles all application states"""
+    """State class handle all applications states"""
     if storage_type == "db":
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
@@ -23,7 +23,6 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """
-            getter method, returns list of City objs from storage
             linked to the current State
             """
             city_list = []
