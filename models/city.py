@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-City Class from Models Module
+City Class from Models and Api
 """
 import os
 from models.base_model import BaseModel, Base
@@ -11,7 +11,7 @@ storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class City(BaseModel, Base):
-    """City class handles all application cities"""
+    """City class handle all applications cities"""
     if storage_type == "db":
         __tablename__ = 'cities'
         name = Column(String(128), nullable=False)
@@ -25,8 +25,7 @@ class City(BaseModel, Base):
         @property
         def places(self):
             """
-            getter for places
-            :return: list of places in that city
+            :Display: list of places in that city
             """
             all_places = models.storage.all("Place")
 
