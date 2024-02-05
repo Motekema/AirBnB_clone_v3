@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-BaseModel Class of Models Module
+A BaseModel Class of Models Module
 """
 
 import os
@@ -14,7 +14,7 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 """
-    Creates instance of Base if storage type is a database
+    It makes instance of Base if storage type is a database
     If not database storage, uses class Base
 """
 if storage_type == 'db':
@@ -26,7 +26,7 @@ else:
 
 class BaseModel:
     """
-        attributes and functions for BaseModel class
+        An attributes and functions for BaseModel class
     """
 
     if storage_type == 'db':
@@ -37,7 +37,7 @@ class BaseModel:
                             default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
-        """instantiation of new BaseModel Class"""
+        """A instantiation of new BaseModel Class"""
         self.id = str(uuid4())
         self.created_at = datetime.now()
         if kwargs:
@@ -46,7 +46,7 @@ class BaseModel:
 
     def __is_serializable(self, obj_v):
         """
-            private: checks if object is serializable
+            It checks if object is serializable
         """
         try:
             obj_to_str = json.dumps(obj_v)
@@ -56,21 +56,21 @@ class BaseModel:
 
     def bm_update(self, name, value):
         """
-            updates the basemodel and sets the correct attributes
+            It updates basemodel and sets correct attributes
         """
         setattr(self, name, value)
         if storage_type != 'db':
             self.save()
 
     def save(self):
-        """updates attribute updated_at to current time"""
+        """It updates attribute updated_at to current time"""
         if storage_type != 'db':
             self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_json(self):
-        """returns json representation of self"""
+        """It returns json representation of self"""
         bm_dict = {}
         for key, value in (self.__dict__).items():
             if (self.__is_serializable(value)):
@@ -85,12 +85,12 @@ class BaseModel:
         return bm_dict
 
     def __str__(self):
-        """returns string type representation of object instance"""
+        """It returns string type representation of object instance"""
         class_name = type(self).__name__
         return '[{}] ({}) {}'.format(class_name, self.id, self.__dict__)
 
     def delete(self):
         """
-            deletes current instance from storage
+            It remove current instance from storage
         """
         self.delete()
