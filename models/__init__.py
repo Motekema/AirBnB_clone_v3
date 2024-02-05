@@ -7,7 +7,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-"""CNC - dictionary = { Class Name (string) : Class Type }"""
+"""CNC - dictionarys = { Class Names (strings) : Class Type }"""
 
 if os.environ.get('HBNB_TYPE_STORAGE') == 'db':
     from models.engine import db_storage
