@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Place Class from Models Module
+Place Class from Models and Api
 """
 import os
 from models.base_model import BaseModel, Base
@@ -24,7 +24,7 @@ if os.getenv("HBNB_TYPE_STORAGE") == "db":
 
 
 class Place(BaseModel, Base):
-    """Place class handles all application places"""
+    """Place class handle all applications places"""
     if storage_type == "db":
         __tablename__ = 'places'
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
@@ -59,7 +59,7 @@ class Place(BaseModel, Base):
         def amenities(self):
             """
             ammenities getter
-            :return: list of amenitites
+            :Display: list of amenitites
             """
             amenity_objs = []
 
@@ -71,16 +71,16 @@ class Place(BaseModel, Base):
         @amenities.setter
         def amenities(self, amenity):
             """
-            ammenities setter
-            :return:
+            Ammenities setter
+            :Display:
             """
             self.amenity_ids.append(amenity.id)
 
         @property
         def reviews(self):
             """
-            reviews getter
-            :return: list of reviews
+            Reviews getter
+            :Display: list of reviews
             """
             all_reviews = models.storage.all("Review")
             place_reviews = []
